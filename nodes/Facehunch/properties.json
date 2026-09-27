@@ -1,0 +1,72 @@
+[
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "Get Profile",
+        "value": "get_profile",
+        "description": "Read the signed-in customer's own Facehunch account profile. Does not search for or identify other people",
+        "action": "Get Profile in Facehunch"
+      },
+      {
+        "name": "Get Report",
+        "value": "get_report",
+        "description": "Read metadata and stored source links from an owned unlocked report. Similarity is not proof of identity. Locked results remain hidden; finish access in the product UI",
+        "action": "Get Report in Facehunch"
+      },
+      {
+        "name": "List Reports",
+        "value": "list_reports",
+        "description": "Browse existing owned reports. No search or identity inference is performed",
+        "action": "List Reports in Facehunch"
+      }
+    ],
+    "default": "get_profile"
+  },
+  {
+    "displayName": "Report Id",
+    "name": "get_report__reportId",
+    "type": "string",
+    "default": "",
+    "required": true,
+    "description": "The report id for this operation",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "get_report"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Additional Fields",
+    "name": "options_list_reports",
+    "type": "collection",
+    "placeholder": "Add Field",
+    "default": {},
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "list_reports"
+        ]
+      }
+    },
+    "options": [
+      {
+        "displayName": "Offset",
+        "name": "offset",
+        "type": "number",
+        "default": 0,
+        "description": "The offset for this operation",
+        "typeOptions": {
+          "minValue": 0,
+          "maxValue": 10000,
+          "numberPrecision": 0
+        }
+      }
+    ]
+  }
+]

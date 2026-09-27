@@ -1,0 +1,70 @@
+[
+  {
+    "name": "get_profile",
+    "title": "Read your Facehunch profile",
+    "description": "Read the signed-in customer's own Facehunch account profile. Does not search for or identify other people.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "annotations": {
+      "title": "Read your Facehunch profile",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "get_report",
+    "title": "Read an existing report",
+    "description": "Read metadata and stored source links from an owned unlocked report. Similarity is not proof of identity. Locked results remain hidden; finish access in the product UI.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "reportId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "reportId"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "Read an existing report",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "list_reports",
+    "title": "List your reports",
+    "description": "Browse existing owned reports. No search or identity inference is performed.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000,
+          "default": 0
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "List your reports",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  }
+]
