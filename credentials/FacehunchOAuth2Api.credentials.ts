@@ -18,13 +18,13 @@ export class FacehunchOAuth2Api implements ICredentialType {
       displayName: "Server URL",
       name: "serverUrl",
       type: "hidden",
-      default: "https://mcp.facehunch.com/mcp",
+      default: "https://mcp.facehunch.com/v1",
     },
     {
       displayName: "Resource URL",
       name: "resourceUrl",
       type: "hidden",
-      default: "https://mcp.facehunch.com/mcp",
+      default: "https://mcp.facehunch.com/v1",
     },
   ];
 }

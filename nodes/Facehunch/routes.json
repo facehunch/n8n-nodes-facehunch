@@ -1,0 +1,14 @@
+{
+  "get_profile": {
+    "method": "GET",
+    "path": "/v1/account"
+  },
+  "list_reports": {
+    "method": "GET",
+    "path": "/v1/reports"
+  },
+  "get_report": {
+    "method": "GET",
+    "path": "/v1/reports/:reportId"
+  }
+}
