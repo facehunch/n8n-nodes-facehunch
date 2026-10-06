@@ -1,5 +1,22 @@
 [
   {
+    "displayName": "Resource",
+    "name": "resource",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "Account",
+        "value": "account"
+      },
+      {
+        "name": "Report",
+        "value": "reports"
+      }
+    ],
+    "default": "account"
+  },
+  {
     "displayName": "Operation",
     "name": "operation",
     "type": "options",
@@ -10,7 +27,23 @@
         "value": "get_profile",
         "description": "Read the signed-in customer's own Facehunch account profile. Does not search for or identify other people",
         "action": "Get Profile in Facehunch"
-      },
+      }
+    ],
+    "default": "get_profile",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "account"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
       {
         "name": "Get Report",
         "value": "get_report",
@@ -24,7 +57,14 @@
         "action": "List Reports in Facehunch"
       }
     ],
-    "default": "get_profile"
+    "default": "get_report",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "reports"
+        ]
+      }
+    }
   },
   {
     "displayName": "Report Id",
@@ -37,6 +77,9 @@
       "show": {
         "operation": [
           "get_report"
+        ],
+        "resource": [
+          "reports"
         ]
       }
     }
@@ -51,6 +94,9 @@
       "show": {
         "operation": [
           "list_reports"
+        ],
+        "resource": [
+          "reports"
         ]
       }
     },
