@@ -5,7 +5,11 @@
 	},
 	"list_reports": {
 		"method": "GET",
-		"path": "/v1/reports"
+		"path": "/v1/reports",
+		"pagination": {
+			"items": ["reports"],
+			"kind": "offset"
+		}
 	},
 	"get_report": {
 		"method": "GET",

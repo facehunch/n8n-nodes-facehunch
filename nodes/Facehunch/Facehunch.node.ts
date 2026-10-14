@@ -13,16 +13,26 @@ export class Facehunch implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Facehunch',
 		name: 'facehunch',
-		icon: { light: 'file:facehunch.svg', dark: 'file:facehunch.svg' },
+		icon: {
+			light: 'file:facehunch.svg',
+			dark: 'file:facehunch.svg',
+		},
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
 		description: 'Automate your Facehunch account',
-		defaults: { name: 'Facehunch' },
+		defaults: {
+			name: 'Facehunch',
+		},
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
 		usableAsTool: true,
-		credentials: [{ name: 'facehunchOAuth2Api', required: true }],
+		credentials: [
+			{
+				name: 'facehunchOAuth2Api',
+				required: true,
+			},
+		],
 		properties: [
 			{
 				displayName: 'Resource',
@@ -105,34 +115,39 @@ export class Facehunch implements INodeType {
 				},
 			},
 			{
-				displayName: 'Additional Fields',
-				name: 'options_list_reports',
-				type: 'collection',
-				placeholder: 'Add Field',
-				default: {},
+				displayName: 'Return All',
+				name: 'returnAll',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to return all results or only up to a given limit',
 				displayOptions: {
 					show: {
 						operation: ['list_reports'],
 						resource: ['reports'],
 					},
 				},
-				options: [
-					{
-						displayName: 'Offset',
-						name: 'offset',
-						type: 'number',
-						default: 0,
-						description: 'The offset for this operation',
-						typeOptions: {
-							minValue: 0,
-							maxValue: 10000,
-							numberPrecision: 0,
-						},
+			},
+			{
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				default: 50,
+				typeOptions: {
+					minValue: 1,
+					numberPrecision: 0,
+				},
+				description: 'Max number of results to return',
+				displayOptions: {
+					show: {
+						operation: ['list_reports'],
+						resource: ['reports'],
+						returnAll: [false],
 					},
-				],
+				},
 			},
 		],
 	};
+
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		return executeOperations(
 			this,
